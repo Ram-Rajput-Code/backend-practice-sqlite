@@ -1,4 +1,3 @@
-
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ItemsList from "./components/Items/ItemsList";
@@ -8,15 +7,14 @@ import UsersList from "./components/Users/UsersList";
 import AddUser from "./components/Users/AddUser";
 import EditUser from "./components/Users/EditUser"; // Import EditUser
 import Home from "./components/pages/Home";
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import HomeCardsList from "./components/HomeCardsList";
 const App = () => {
   return (
     <Router>
       {/* home page route */}
-      <Home/>
-
+      <Home />
+      <HomeCardsList/>
       <Routes>
         <Route path="/items" element={<ItemsList />} />
         <Route path="/items/add" element={<AddItem />} />

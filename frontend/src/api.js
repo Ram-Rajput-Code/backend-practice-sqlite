@@ -19,4 +19,12 @@ export const createUser = (data) => api.post("/users", data);
 export const updateUser = (id, data) => api.put(`/users/${id}`, data);
 export const deleteUser = (id) => api.delete(`/users/${id}`);
 
+// HomeCards API
+export const getHomeCards = () => api.get("/homeCards");
+export const getHomeCardById = (id) => api.get(`/homeCards/${id}`);
+export const createHomeCard = (data) => api.post("/homeCards", data);
+export const updateHomeCard = (id, data) => api.put(`/homeCards/${id}`, data);
+export const deleteHomeCard = (id) => api.delete(`/homeCards/${id}`);
+
+
 export default api;
