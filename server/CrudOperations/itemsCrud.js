@@ -1,4 +1,4 @@
-const db = require("./database");
+const db = require("../config/database");
 
 //create
 const createItem = (name, description, callback) => {
@@ -33,4 +33,10 @@ const readItemById = (id, callback) => {
   db.get(sql, [id], callback);
 };
 
-module.exports = { createItem, readItems, updateItem, deleteItem, readItemById };
+module.exports = {
+  createItem,
+  readItems,
+  updateItem,
+  deleteItem,
+  readItemById,
+};
