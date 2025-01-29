@@ -26,5 +26,10 @@ export const createHomeCard = (data) => api.post("/homeCards", data);
 export const updateHomeCard = (id, data) => api.put(`/homeCards/${id}`, data);
 export const deleteHomeCard = (id) => api.delete(`/homeCards/${id}`);
 
+//home slider
+export const uploadImage = (formData) => api.post("/upload", formData);
+export const getSliderImages = () => api.get("/slider-images");
+export const updateSliderImage = (id, formData) => api.put(`/slider-images/${id}`, formData);
+export const deleteSliderImage = (id) => api.delete(`/slider-images/${id}`);
 
 export default api;

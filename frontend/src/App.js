@@ -12,12 +12,13 @@ import HomeCardsList from "./components/pages/homePage/HomeCardsList";
 import NavBar from "./components/pages/NavBar/NavBar";
 import AdminLayout from "./components/pages/Admin/AdminLayout";
 import Product from "./components/pages/productPage/Product";
+import HomePageSlider from "./components/pages/homePage/HomePageSlider";
 
 const App = () => {
   return (
     <Router>
       <NavBar />
-     
+     <HomePageSlider/>
       <Routes>
         {/* home page route */}
         <Route

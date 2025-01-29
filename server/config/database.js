@@ -48,6 +48,18 @@ let db = new sqlite3.Database(dbName, (err) => {
         else console.log("`homeCards` table created or already exists");
       }
     );
+
+    // Create `home slider` table
+    db.run(
+      `CREATE TABLE IF NOT EXISTS homepage_slider (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        image TEXT
+      )`,
+      (err) => {
+        if (err) console.error(err.message);
+        else console.log("`homepage_slider` table created or already exists");
+      }
+    );
   }
 });
 

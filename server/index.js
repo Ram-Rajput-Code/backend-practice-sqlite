@@ -1,4 +1,4 @@
-// server.js
+// index.js
 
 const express = require("express");
 const {
@@ -27,6 +27,30 @@ const cors = require("cors");
 
 app.use(cors());
 app.use(express.json());
+const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
+
+// Ensure uploads directory exists
+const uploadDir = path.join(__dirname, "uploads");
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
+
+// Configure Multer storage
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, uploadDir);
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`);
+  },
+});
+
+const upload = multer({ storage });
+
+// Serve uploaded images statically
+app.use("/uploads", express.static(uploadDir));
 
 // Routes for items
 app.get("/items", (req, res) => {
@@ -202,6 +226,81 @@ app.delete("/homeCards/:id", (req, res) => {
     } else {
       res.status(200).send(`Home card with ID ${id} deleted.`);
     }
+  });
+});
+
+// Import SQLite database
+const db = require("./config/database");
+
+// Upload an image
+app.post("/upload", upload.single("image"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).send("No file uploaded.");
+  }
+
+  const imagePath = `/uploads/${req.file.filename}`;
+  db.run(
+    "INSERT INTO homepage_slider (image) VALUES (?)",
+    [imagePath],
+    function (err) {
+      if (err) {
+        return res.status(500).send(err.message);
+      }
+      res.status(201).json({ id: this.lastID, image: imagePath });
+    }
+  );
+});
+
+// Get all images
+app.get("/slider-images", (req, res) => {
+  db.all("SELECT * FROM homepage_slider", [], (err, rows) => {
+    if (err) {
+      return res.status(500).send(err.message);
+    }
+    res.status(200).json(rows);
+  });
+});
+
+// Update an image
+app.put("/slider-images/:id", upload.single("image"), (req, res) => {
+  const { id } = req.params;
+  if (!req.file) {
+    return res.status(400).send("No file uploaded.");
+  }
+
+  const newImagePath = `/uploads/${req.file.filename}`;
+  db.run(
+    "UPDATE homepage_slider SET image = ? WHERE id = ?",
+    [newImagePath, id],
+    function (err) {
+      if (err) {
+        return res.status(500).send(err.message);
+      }
+      res.status(200).json({ id, image: newImagePath });
+    }
+  );
+});
+
+// Delete an image
+app.delete("/slider-images/:id", (req, res) => {
+  const { id } = req.params;
+
+  db.get("SELECT image FROM homepage_slider WHERE id = ?", [id], (err, row) => {
+    if (err || !row) {
+      return res.status(404).send("Image not found.");
+    }
+
+    const filePath = path.join(__dirname, row.image);
+    fs.unlink(filePath, (err) => {
+      if (err) console.error("Failed to delete file:", err);
+    });
+
+    db.run("DELETE FROM homepage_slider WHERE id = ?", [id], (err) => {
+      if (err) {
+        return res.status(500).send(err.message);
+      }
+      res.status(200).send(`Image with ID ${id} deleted.`);
+    });
   });
 });
 
