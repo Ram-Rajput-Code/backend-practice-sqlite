@@ -6,24 +6,32 @@ import EditItem from "./components/Items/EditItem"; // Import EditItem
 import UsersList from "./components/Users/UsersList";
 import AddUser from "./components/Users/AddUser";
 import EditUser from "./components/Users/EditUser"; // Import EditUser
-import Home from "./components/pages/Home";
+import Home from "./components/pages/homePage/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
-import HomeCardsList from "./components/HomeCardsList";
+import HomeCardsList from "./components/pages/homePage/HomeCardsList";
+import NavBar from "./components/pages/NavBar/NavBar";
+
 const App = () => {
   return (
     <Router>
       {/* home page route */}
-      <Home />
-      <HomeCardsList/>
+      <NavBar/>
       <Routes>
+        <Route path="/" element={<Home />} />
+         {" "}
+
+          {/* Edit item route */}
         <Route path="/items" element={<ItemsList />} />
-        <Route path="/items/add" element={<AddItem />} />
-        <Route path="/items/edit/:id" element={<EditItem />} />{" "}
-        {/* Edit item route */}
+         {" "}
+        {/* Edit user route */}
         <Route path="/users" element={<UsersList />} />
         <Route path="/users/add" element={<AddUser />} />
         <Route path="/users/edit/:id" element={<EditUser />} />{" "}
-        {/* Edit user route */}
+       
+
+        {/* Edit Home route */}
+        <Route path="/homeCard" element={<HomeCardsList/>}/>
+        
       </Routes>
     </Router>
   );

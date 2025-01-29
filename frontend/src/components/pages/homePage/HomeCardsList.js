@@ -5,7 +5,7 @@ import {
   createHomeCard,
   getHomeCardById,
   updateHomeCard,
-} from "../api";
+} from "../../../api";
 import { Button, Modal, Form, Table } from "react-bootstrap";
 
 const HomeCardsList = () => {
@@ -68,7 +68,16 @@ const HomeCardsList = () => {
           {cards.map((card, index) => (
             <tr key={card.id}>
               <td>{index + 1}</td>
-              <td>{card.icon}</td>
+              <td>
+                {/* Display the icon as an image */}
+                {card.icon && (
+                  <img
+                    src={card.icon}
+                    alt={card.heading}
+                    style={{ width: "30px", height: "30px" }} // Customize the size
+                  />
+                )}
+              </td>
               <td>{card.heading}</td>
               <td>{card.content}</td>
               <td>
