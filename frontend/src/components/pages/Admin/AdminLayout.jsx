@@ -20,35 +20,35 @@ const AdminLayout = () => {
       <Row>
         {/* Left Sidebar - Navbar */}
         <Col
+          variant="dark"
+          bg="secondary"
           xs={2}
-          className="bg-dark text-white p-3"
+          className="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-1"
           style={{ height: "100vh" }}
         >
-          <Navbar.Brand className="text-white">
-            Admin Panel
-          </Navbar.Brand>
+          <Navbar.Brand className="text-dark">Admin Panel</Navbar.Brand>
           <Nav defaultActiveKey="/" className="flex-column">
             <Nav.Link
               onClick={() => handleNavigation("dashboard")}
-              className="text-white"
+              className="text-dark"
             >
               Dashboard
             </Nav.Link>
             <Nav.Link
               onClick={() => handleNavigation("users")}
-              className="text-white"
+              className="text-dark"
             >
               Users Master
             </Nav.Link>
             <Nav.Link
               onClick={() => handleNavigation("items")}
-              className="text-white"
+              className="text-dark"
             >
               Items Master
             </Nav.Link>
             <Nav.Link
               onClick={() => handleNavigation("homeCard")}
-              className="text-white"
+              className="text-dark"
             >
               Home Page Master
             </Nav.Link>
@@ -63,7 +63,8 @@ const AdminLayout = () => {
           {activePage === "addUser" && <AddUser />}
           {activePage === "editUser" && <EditUser />}
           {activePage === "items" && <ItemsList />}
-          {activePage === "dashboard" && <div>Dashboard Content</div>} {/* Replace with your actual Dashboard component */}
+          {activePage === "dashboard" && <div>Dashboard Content</div>}{" "}
+          {/* Replace with your actual Dashboard component */}
         </Col>
       </Row>
     </Container>
