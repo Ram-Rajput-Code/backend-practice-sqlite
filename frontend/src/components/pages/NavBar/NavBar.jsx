@@ -20,7 +20,7 @@ const NavBar = () => {
             <Nav className="ms-auto"> {/* This will push navbar items to the right */}
               <Nav.Link as={Link} to="/" style={{ color: 'white' }}>Home</Nav.Link>
               <Nav.Link as={Link} to="/" style={{ color: 'white' }}>About</Nav.Link>
-              <Nav.Link as={Link} to="/" style={{ color: 'white' }}>Services</Nav.Link>
+              <Nav.Link as={Link} to="/product" style={{ color: 'white' }}>Products</Nav.Link>
               <Nav.Link as={Link} to="/" style={{ color: 'white' }}>Contact</Nav.Link>
             </Nav>
           </Navbar.Collapse>

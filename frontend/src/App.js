@@ -11,20 +11,31 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import HomeCardsList from "./components/pages/homePage/HomeCardsList";
 import NavBar from "./components/pages/NavBar/NavBar";
 import AdminLayout from "./components/pages/Admin/AdminLayout";
+import Product from "./components/pages/productPage/Product";
 
 const App = () => {
   return (
     <Router>
       <NavBar />
-
-      {/* home page route */}
+     
       <Routes>
+        {/* home page route */}
         <Route
           path="/"
           element={
             <>
               {/* <NavBar /> */}
               <Home />
+            </>
+          }
+        />
+        {/* product page route */}
+        <Route
+          path="/product"
+          element={
+            <>
+              {/* <NavBar /> */}
+              <Product />
             </>
           }
         />

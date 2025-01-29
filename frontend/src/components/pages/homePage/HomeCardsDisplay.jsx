@@ -27,11 +27,11 @@ const HomeCardsDisplay = () => {
     <Container>
       <Grid container spacing={3}>
         {cards.map((card, index) => (
-          <Grid item xs={12} sm={6} md={4} key={card.id}>
-            <Card sx={{ maxWidth: 345, boxShadow: 3, borderRadius: 2 }}>
+          <Grid item xs={12} sm={6} md={3} key={card.id}>
+            <Card sx={{ maxWidth: 345, height:250, boxShadow: 3, borderRadius: 2, mt:5}}>
               <CardMedia
                 component="img"
-                height="140"
+                height="40"
                 image={card.icon} // Assuming it's a valid image URL
                 alt={card.heading}
               />
