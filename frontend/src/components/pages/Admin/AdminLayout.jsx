@@ -1,5 +1,4 @@
-import { Route, Routes, useLocation } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 import HomeCardsList from "../homePage/HomeCardsList";
 import UsersList from "../../Users/UsersList";
@@ -7,10 +6,14 @@ import AddUser from "../../Users/AddUser";
 import EditUser from "../../Users/EditUser";
 import ItemsList from "../../Items/ItemsList";
 
-// Import your components
-
 const AdminLayout = () => {
-  const location = useLocation(); // Get the current URL
+  // State to track the currently active page/component
+  const [activePage, setActivePage] = useState("dashboard");
+
+  // Event handler to change the active page
+  const handleNavigation = (page) => {
+    setActivePage(page); // Update the active page state
+  };
 
   return (
     <Container fluid>
@@ -21,20 +24,32 @@ const AdminLayout = () => {
           className="bg-dark text-white p-3"
           style={{ height: "100vh" }}
         >
-          <Navbar.Brand href="/admin" className="text-white">
+          <Navbar.Brand className="text-white">
             Admin Panel
           </Navbar.Brand>
           <Nav defaultActiveKey="/" className="flex-column">
-            <Nav.Link href="/admin" className="text-white">
+            <Nav.Link
+              onClick={() => handleNavigation("dashboard")}
+              className="text-white"
+            >
               Dashboard
             </Nav.Link>
-            <Nav.Link href="/users" className="text-white">
+            <Nav.Link
+              onClick={() => handleNavigation("users")}
+              className="text-white"
+            >
               Users Master
             </Nav.Link>
-            <Nav.Link href="/items" className="text-white">
+            <Nav.Link
+              onClick={() => handleNavigation("items")}
+              className="text-white"
+            >
               Items Master
             </Nav.Link>
-            <Nav.Link href="/homeCard" className="text-white">
+            <Nav.Link
+              onClick={() => handleNavigation("homeCard")}
+              className="text-white"
+            >
               Home Page Master
             </Nav.Link>
           </Nav>
@@ -42,12 +57,13 @@ const AdminLayout = () => {
 
         {/* Right Side - Body */}
         <Col xs={10} className="p-4">
-          {/* Conditional rendering based on the current URL */}
-          {location.pathname === "/homeCard" && <HomeCardsList />}
-          {location.pathname === "/users" && <UsersList />}
-          {location.pathname === "/users/add" && <AddUser />}
-          {location.pathname === "/users/edit" && <EditUser />}
-          {location.pathname === "/items" && <ItemsList />}
+          {/* Conditional rendering based on the active page state */}
+          {activePage === "homeCard" && <HomeCardsList />}
+          {activePage === "users" && <UsersList />}
+          {activePage === "addUser" && <AddUser />}
+          {activePage === "editUser" && <EditUser />}
+          {activePage === "items" && <ItemsList />}
+          {activePage === "dashboard" && <div>Dashboard Content</div>} {/* Replace with your actual Dashboard component */}
         </Col>
       </Row>
     </Container>

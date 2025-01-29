@@ -31,9 +31,7 @@ const App = () => {
 
         {/* Edit item route */}
         <Route path="/admin" element={<AdminLayout />} />
-        <Route path="/users" element={<AdminLayout />} />
-        <Route path="/items" element={<AdminLayout />} />
-        <Route path="/homeCard" element={<AdminLayout />} />
+        
       </Routes>
     </Router>
   );
