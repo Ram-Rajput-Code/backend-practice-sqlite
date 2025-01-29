@@ -57,7 +57,7 @@ const ImageSlider = () => {
   };
 
   return (
-    <Card sx={{ maxWidth: 800, margin: "auto", padding: 2, boxShadow: 3 }}>
+    <Card sx={{ maxWidth: "100%", margin: "auto", padding: 2, boxShadow: 3 }}>
       <Typography variant="h5" align="center" gutterBottom>
         Image Slider
       </Typography>
