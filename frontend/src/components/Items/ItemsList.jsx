@@ -117,7 +117,7 @@ const ItemsList = () => {
         ))}
       </ul> */}
 
-<Table striped bordered hover>
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>#</th>
@@ -133,7 +133,11 @@ const ItemsList = () => {
               <td>{item.name}</td>
               <td>{item.description}</td>
               <td>
-                <Button variant="warning" onClick={() => openEditModal(item.id)} className="me-2">
+                <Button
+                  variant="warning"
+                  onClick={() => openEditModal(item.id)}
+                  className="me-2"
+                >
                   Edit
                 </Button>
                 <Button variant="danger" onClick={() => handleDelete(item.id)}>

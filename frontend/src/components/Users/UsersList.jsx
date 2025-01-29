@@ -31,14 +31,14 @@ const UsersList = () => {
         ))}
       </ul> */}
       <ul>
-  {users.map((user) => (
-    <li key={user.id}>
-      {user.username} - {user.email}{" "}
-      <Link to={`/users/edit/${user.id}`}>Edit</Link>
-      <button onClick={() => handleDelete(user.id)}>Delete</button>
-    </li>
-  ))}
-</ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            {user.username} - {user.email}{" "}
+            <Link to={`/users/edit/${user.id}`}>Edit</Link>
+            <button onClick={() => handleDelete(user.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

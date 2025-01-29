@@ -10,28 +10,30 @@ import Home from "./components/pages/homePage/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HomeCardsList from "./components/pages/homePage/HomeCardsList";
 import NavBar from "./components/pages/NavBar/NavBar";
+import AdminLayout from "./components/pages/Admin/AdminLayout";
 
 const App = () => {
   return (
     <Router>
+      <NavBar />
+
       {/* home page route */}
-      <NavBar/>
       <Routes>
-        <Route path="/" element={<Home />} />
-         {" "}
+        <Route
+          path="/"
+          element={
+            <>
+              {/* <NavBar /> */}
+              <Home />
+            </>
+          }
+        />
 
-          {/* Edit item route */}
-        <Route path="/items" element={<ItemsList />} />
-         {" "}
-        {/* Edit user route */}
-        <Route path="/users" element={<UsersList />} />
-        <Route path="/users/add" element={<AddUser />} />
-        <Route path="/users/edit/:id" element={<EditUser />} />{" "}
-       
-
-        {/* Edit Home route */}
-        <Route path="/homeCard" element={<HomeCardsList/>}/>
-        
+        {/* Edit item route */}
+        <Route path="/admin" element={<AdminLayout />} />
+        <Route path="/users" element={<AdminLayout />} />
+        <Route path="/items" element={<AdminLayout />} />
+        <Route path="/homeCard" element={<AdminLayout />} />
       </Routes>
     </Router>
   );
