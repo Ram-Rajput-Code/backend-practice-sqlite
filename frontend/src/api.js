@@ -32,4 +32,5 @@ export const getSliderImages = () => api.get("/slider-images");
 export const updateSliderImage = (id, formData) => api.put(`/slider-images/${id}`, formData);
 export const deleteSliderImage = (id) => api.delete(`/slider-images/${id}`);
 
+
 export default api;

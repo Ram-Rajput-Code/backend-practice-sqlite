@@ -5,6 +5,7 @@ import UsersList from "../../Users/UsersList";
 import AddUser from "../../Users/AddUser";
 import EditUser from "../../Users/EditUser";
 import ItemsList from "../../Items/ItemsList";
+import HomePageSliderAdmin from "../homePage/HomePageSliderAdmin";
 
 const AdminLayout = () => {
   // State to track the currently active page/component
@@ -52,6 +53,12 @@ const AdminLayout = () => {
             >
               Home Page Master
             </Nav.Link>
+            <Nav.Link
+              onClick={() => handleNavigation("slider")}
+              className="text-dark"
+            >
+              Home Page slider
+            </Nav.Link>
           </Nav>
         </Col>
 
@@ -63,6 +70,8 @@ const AdminLayout = () => {
           {activePage === "addUser" && <AddUser />}
           {activePage === "editUser" && <EditUser />}
           {activePage === "items" && <ItemsList />}
+          {activePage === "slider" && <HomePageSliderAdmin />}
+
           {activePage === "dashboard" && <div>Dashboard Content</div>}{" "}
           {/* Replace with your actual Dashboard component */}
         </Col>
