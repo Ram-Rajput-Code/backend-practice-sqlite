@@ -5,7 +5,7 @@ import {
   createHomeCard,
   getHomeCardById,
   updateHomeCard,
-} from "../../../api";
+} from "../../../../api";
 import { Button, Modal, Form, Table } from "react-bootstrap";
 
 const HomeCardsList = () => {

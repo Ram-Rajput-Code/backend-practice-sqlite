@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { getSliderImages, uploadImage, deleteSliderImage, updateSliderImage } from "../../../api";
+import {
+  getSliderImages,
+  uploadImage,
+  deleteSliderImage,
+  updateSliderImage,
+} from "../../../../api";
 
 const HomePageSliderAdmin = () => {
   const [images, setImages] = useState([]);
@@ -60,11 +65,11 @@ const HomePageSliderAdmin = () => {
               alt="Slider"
               width="200"
             />
-            <input
-              type="file"
-              onChange={(e) => handleFileChange(e, img.id)}
-            />
-            <button onClick={handleUpload} disabled={!selectedFile || editImageId !== img.id}>
+            <input type="file" onChange={(e) => handleFileChange(e, img.id)} />
+            <button
+              onClick={handleUpload}
+              disabled={!selectedFile || editImageId !== img.id}
+            >
               Update
             </button>
             <button onClick={() => handleDelete(img.id)}>Delete</button>
@@ -75,11 +80,9 @@ const HomePageSliderAdmin = () => {
   );
 };
 
-export default HomePageSliderAdmin;  
-
+export default HomePageSliderAdmin;
 
 //new code
-
 
 // import React, { useEffect, useState } from "react";
 // import {
@@ -150,7 +153,6 @@ export default HomePageSliderAdmin;
 //       </div>
 
 //       {/* Image Slider Component */}
-     
 
 //       <div className="slider mt-4">
 //         {images.map((img) => (

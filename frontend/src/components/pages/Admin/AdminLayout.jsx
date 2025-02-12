@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
-import HomeCardsList from "../homePage/HomeCardsList";
+import HomeCardsList from "./AdminPageComponents/HomeCardsList";
 import UsersList from "../../Users/UsersList";
 import AddUser from "../../Users/AddUser";
 import EditUser from "../../Users/EditUser";
 import ItemsList from "../../Items/ItemsList";
-import HomePageSliderAdmin from "../homePage/HomePageSliderAdmin";
+import HomePageSliderAdmin from "./AdminPageComponents/HomePageSliderAdmin";
 
 const AdminLayout = () => {
   // State to track the currently active page/component
@@ -71,7 +71,6 @@ const AdminLayout = () => {
           {activePage === "editUser" && <EditUser />}
           {activePage === "items" && <ItemsList />}
           {activePage === "slider" && <HomePageSliderAdmin />}
-
           {activePage === "dashboard" && <div>Dashboard Content</div>}{" "}
           {/* Replace with your actual Dashboard component */}
         </Col>
